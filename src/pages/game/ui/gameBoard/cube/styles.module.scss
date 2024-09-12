@@ -1,0 +1,51 @@
+.cube {
+    list-style: none;
+    transform-style: preserve-3d;
+    transition: 2s ease-in-out;
+    width: 90px;
+    height: 90px;
+
+    li {
+        width: 90px;
+        height: 90px;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        border: 2px solid black;
+        border-radius: 5px;
+    }
+}
+
+.one {
+    transform: rotateY(-90deg) translateZ(45px);
+}
+
+.two {
+    transform: rotateX(-90deg) translateZ(45px);
+}
+
+.three {
+    transform: rotateY(180deg) translateZ(45px);
+}
+
+.four {
+    transform: translateZ(45px);
+}
+
+.five {
+    transform: rotateX(90deg) translateZ(45px);
+}
+
+.six {
+    transform: rotateY(90deg) translateZ(45px);
+}
+
+.circle {
+    border-radius: 50%;
+    background-color: black;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+}

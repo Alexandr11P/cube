@@ -1,0 +1,17 @@
+.select {
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    padding: 8px 12px;
+    border: 1px solid #CBD5E1;
+    font-size: 16px;
+    font-weight: 400;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-origin: content-box;
+    outline: none;
+
+    &:focus {
+        border-color: #3893FF;
+    }
+}

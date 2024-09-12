@@ -1,0 +1,15 @@
+.main {
+    min-height: 100vh;
+    background: linear-gradient(268.59deg, #0C0B1E 0.91%, #2A0F3B 51.75%, #0C0B1E 98.52%);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    padding: 10px 24px;
+
+    .name {
+        font-weight: 700;
+    }
+}

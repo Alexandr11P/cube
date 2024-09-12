@@ -1,0 +1,44 @@
+.button_green,
+.button_violet {
+    padding: 10px 16px;
+    border-radius: 5px;
+    border-width: 1px;
+    font-size: 16px;
+    font-weight: 400;
+    transition: 0.1s;
+}
+
+.button_green {
+    background-color: #37AC00;
+    border-color: #55F30A;
+
+    &:hover {
+        background-color: #41CA00;
+        border-color: #7DFF3F;
+    }
+
+    &:disabled {
+        opacity: 0.3;
+    }
+}
+
+
+.button_violet {
+    background-color: #643F82;
+    border-color: #9159BE;
+
+    &:hover {
+        background-color: #8151A8;
+        border-color: #AB69E2;
+    }
+}
+
+.active {
+    background-color: #F6A200;
+    border-color: #D77400;
+
+    &:hover {
+        background-color: #F6A200;
+        border-color: #D77400;
+    }
+}
