@@ -1,13 +1,15 @@
-import { useMemo, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Button, Input, Select } from '../../../../shared/ui/components'
 import classes from './styles.module.scss'
 import { Cube } from './cube';
 import { useUnit } from 'effector-react';
 import { minus, plus } from '../../../../shared/model/money';
+import { $auth } from '../../../../shared/model/auth';
 
 function GameBoard() {
 
     const [plusFn, minusFn] = useUnit([plus, minus])
+    const [isAuth] = useUnit([$auth])
 
     const [win, setWin] = useState<1 | 0 | -1>(0)
 
@@ -22,9 +24,11 @@ function GameBoard() {
 
     const [num, setNum] = useState<'' | number>(1);
 
+    const [winText, setWinText] = useState(0);
+
     const betSelect = useRef<HTMLSelectElement>(null);
 
-    const winText = useMemo(() => { return betSelect.current?.value }, [dice, isRepeat]);
+    // const winText = useMemo(() => { return betSelect.current?.value }, [dice, isRepeat]);
 
     function resetAllbtn() { setNumActive(false); setEven(false); setOdd(false); setThree(false); setSix(false) }
 
@@ -35,9 +39,15 @@ function GameBoard() {
         if ((random % 2 === 0 && even) ||
             (random % 2 === 1 && odd) ||
             (random > 0 && random < 4 && three) ||
-            (random > 3 && random < 7 && six)) { setWin(1); plusFn(Number(betSelect.current?.value) * 2) }
+            (random > 3 && random < 7 && six)) {
+            setWin(1); plusFn(Number(betSelect.current?.value) * 2)
+            setWinText(Number(betSelect.current?.value))
+        }
         else {
-            if (random === num && numActive) { setWin(1); plusFn(Number(betSelect.current?.value) * 3) }
+            if (random === num && numActive) {
+                setWin(1); plusFn(Number(betSelect.current?.value) * 3);
+                setWinText(Number(betSelect.current?.value) * 2)
+            }
             else { setWin(-1) }
         }
 
@@ -45,14 +55,17 @@ function GameBoard() {
     }
 
     return (
-        <div className={classes.main}>{
-            win === 1 && <div className={classes.header}>Результат броска кубика: {dice}<br />
-                <div>Вы выйграли {winText} TND!</div>
-            </div> ||
-            win === -1 && <div className={classes.header}>Результат броска кубика: {dice}<br />
-                <div>Повезет в следующий раз!</div>
-            </div> ||
-            <div className={classes.header}>Сделайте ставку</div>}
+        <div className={`${classes.main} ${isAuth ? '' : classes.opacity}`}>{
+            isAuth ?
+                win === 1 && <div className={classes.header}>Результат броска кубика: {dice}<br />
+                    <div>Вы выйграли {winText} TND!</div>
+                </div> ||
+                win === -1 && <div className={classes.header}>Результат броска кубика: {dice}<br />
+                    <div>Повезет в следующий раз!</div>
+                </div> ||
+                <div className={classes.header}>Сделайте ставку</div>
+                : <div className={classes.header}>Войдите, чтобы продолжить</div>
+        }
             <div className={classes.cube}>
                 <Cube num={dice as 1} isRepeat={isRepeat} />
             </div>

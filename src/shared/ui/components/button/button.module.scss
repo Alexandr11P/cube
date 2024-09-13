@@ -31,6 +31,12 @@
         background-color: #8151A8;
         border-color: #AB69E2;
     }
+
+    &:disabled {
+        background-color: #643F82;
+        border-color: #9159BE;
+        opacity: 0.3;
+    }
 }
 
 .active {

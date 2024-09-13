@@ -8,8 +8,19 @@
     line-height: 20px;
     align-content: center;
     min-height: 510px;
-    height: calc(100vh - 40px);
-    padding: 10px 5px;
+    height: calc(100vh - 70px);
+    padding: 0 5px 10px 5px;
+}
+
+.opacity {
+    :not(.header) {
+        opacity: 0.3;
+        pointer-events: none;
+
+        * {
+            opacity: 1;
+        }
+    }
 }
 
 .header {

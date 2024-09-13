@@ -1,12 +1,10 @@
-import { GamePage } from '../pages/game/ui'
-
-
 import './global.scss'
+import { Router } from './Router'
 
 function App() {
 
   return (
-    <GamePage />
+    <Router />
   )
 }
 
