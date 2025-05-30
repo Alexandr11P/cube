@@ -6,7 +6,7 @@ import { authCookieFx } from "../api/authCookie";
 const singIn = createEvent();
 const leave = createEvent();
 
-const $auth = createStore(false)
+const $auth = createStore(true)
     .on(singIn, () => true)
     .on(leave, () => false)
     .on(authPostFx.doneData, () => true)
